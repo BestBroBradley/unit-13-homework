@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <title>Hamburger Helper</title>
+    <style>
+        body {
+            background: goldenrod
+            
+        }
+
+        .burgerList {
+            display: flex
+        }
+
+        .container {
+            display: flex
+        }
+
+        .hamburgers {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 12px;
+        }
+
+        #eaten {}
+
+        #uneaten {}
+
+        .burgerImg {
+            height: 300px;
+            width: 300px;
+            margin: auto
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hamburgers" id="uneaten">
+            <div>
+                <h2>Available Burgers:</h2>
+            </div>
+            <div class="burgerList">
+                <div class="row">
+                <li>Hamburger 1</li>
+                <button class="eatBurger">Nom Nom Nom</button>
+                </div>
+                <div class="row">
+                <li>Hamburger 2</li>
+                <button class="eatBurger">Nom Nom Nom</button>
+                </div>
+                <div class="row">
+                <li>Hamburger 3</li>
+                <button class="eatBurger">Nom Nom Nom</button>
+                </div>
+            </div>
+        </div>
+        <div class="hamburgers" id="eaten">
+            <div>
+                <h2>You already ate these:</h2>
+            </div>
+            <div>
+                <li>Hamburger 1</li>
+                <li>Hambuger 2</li>
+                <li>Hamburger 3</li>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p>Add a new burger:</p>
+        <form id="submitBurger">
+            <input type=text name="name">
+            <button type="submit">Add Burger</button>
+        </form>
+        <div class="burgerImg">
+            <img class="burgerImg" src='burgers.png'>
+        </div>
+    </div>
+</body>
+
+</html>
