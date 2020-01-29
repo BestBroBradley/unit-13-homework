@@ -1,49 +1,39 @@
-    <div class="container">
-        <div class="hamburgers" id="uneaten">
+<div class="container">
+    <div class="hamburgers" id="uneaten">
+        <div>
+            <h2>Available Burgers:</h2>
+        </div>
+        <div class="burgerList">
+            {{#each eaten}}
             <div>
-                <h2>Available Burgers:</h2>
-            </div>
-            <div class="burgerList">
-                <div>
-                    <h4>Hamburger 1  |
+                <h4>{{ name }} |
                     <button class="eatBurger">Om Nom Nom</button></h4>
-                </div>
-                <div>
-                    <h4>Hamburger 2  |
-                    <button class="eatBurger">Om Nom Nom</button></h4>
-                </div>
-                <div>
-                    <h4>Hamburger 3  |
-                    <button class="eatBurger">Om Nom Nom</button></h4>
-                </div>
             </div>
-        </div>
-        <div class="hamburgers" id="eaten">
-                <div>
-                    <h2>Devoured Burgers:</h2>
-                </div>
-                <div class="burgerList">
-                    <div>
-                        <h4>Hamburger 1</h4>
-                    </div>
-                    <div>
-                        <h4>Hamburger 2</h4>
-                    </div>
-                    <div>
-                        <h4>Hamburger 3</h4>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <div>
-        <div id="submitDiv">
-            <h3>Add a new burger:</h3>
-            <form id="submitBurger">
-                <input type=text name="name">
-                <button type="submit">Add Burger</button>
-            </form>
-        </div>
-        <div class="burgerImg">
-            <img class="burgerImg" src='burgers.png'>
+            {{/each}}
         </div>
     </div>
+    <div class="hamburgers" id="eaten">
+        <div>
+            <h2>Devoured Burgers:</h2>
+        </div>
+        <div class="burgerList">
+            {{#each uneaten}}
+            <div>
+                <h4>{{ name }}</h4>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<div>
+    <div id="submitDiv">
+        <h3>Add a new burger:</h3>
+        <form id="submitBurger">
+            <input type=text name="name">
+            <button type="submit">Add Burger</button>
+        </form>
+    </div>
+    <div class="burgerImg">
+        <img class="burgerImg" src='burgers.png'>
+    </div>
+</div>

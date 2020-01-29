@@ -32,10 +32,7 @@ app.get("/", (req, res) => {
         const uneatenArray = hamburgers.filter(hamburger => (hamburger.isEaten))
         console.log(eatenArray)
         console.log(uneatenArray)
-        res.render("index", {
-            eaten: eatenArray,
-            uneaten: uneatenArray
-        })
+        res.render("index", {eaten: eatenArray, uneaten: uneatenArray})
         }
     })
 })
