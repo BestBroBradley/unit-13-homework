@@ -1,6 +1,7 @@
 const orm = require("./config/orm.js");
 const express = require("express")
 const exphbs = require("express-handlebars")
+const connection = require("./config/connection.js")
 
 var app = express()
 
@@ -13,13 +14,41 @@ app.use(express.static("public"));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-app.get("/")
+
+// Functionality:
+
+// app.get("/", function(req, res) {
+//     orm.logAll("hamburgers")
+
+// })
+
+app.get("/", (req, res) => {
+    connection.query("SELECT * FROM hamburgers", (err, data) => {
+        if (err) {
+            return res.status(500).end()
+        } else {
+        const hamburgers = data
+        const eatenArray = hamburgers.filter(hamburger => (!hamburger.isEaten))
+        const uneatenArray = hamburgers.filter(hamburger => (hamburger.isEaten))
+        console.log(eatenArray)
+        console.log(uneatenArray)
+        res.render("index", {
+            eaten: eatenArray,
+            uneaten: uneatenArray
+        })
+        }
+    })
+})
 
 
 
 
 
 
+
+
+
+// End functionality
 
 app.listen(PORT, function() {
     // Log (server-side) when our server has started
