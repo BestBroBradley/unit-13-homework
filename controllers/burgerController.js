@@ -26,7 +26,7 @@ router.put("/api/burgers", (req, res) => {
 })
 
 router.post("/api/burgers", (req, res) => {
-    burger.insertItems("hamburgers", "name", [req.body.name], (data => {
+    burger.insertItem("hamburgers", "name", [req.body.name], (data => {
         if (!data) {
             return res.status(500).end()
         } else {
