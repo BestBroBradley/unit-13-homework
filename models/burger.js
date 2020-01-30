@@ -1,12 +1,14 @@
 var connection = require("../config/connection.js")
 
 const burger = {
-    logAll: (colToLog) => {
+    logAll: (colToLog, cb) => {
         let queryString = "SELECT * FROM ??";
         connection.query(queryString, [colToLog], (err, data) => {
             if (err) throw err
-            
+            console.log("Got to burger.logAll")
+            return cb(data)
         })
+
     },
 
     updateBoolean: (table, boo, target) => {

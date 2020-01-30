@@ -1,20 +1,17 @@
 const express = require ("express")
+const connection = require("../config/connection.js")
 
 const router = express.Router();
 
 var burger = require("../models/burger.js")
 
 router.get("/", (req, res) => {
-    connection.query("SELECT * FROM hamburgers", (err, data) => {
-        if (err) {
-            return res.status(500).end()
-        } else {
+    burger.logAll("hamburgers", (data => {
         const hamburgers = data
         const eatenArray = hamburgers.filter(hamburger => (!hamburger.isEaten))
         const uneatenArray = hamburgers.filter(hamburger => (hamburger.isEaten))
         res.render("index", {eaten: eatenArray, uneaten: uneatenArray})
-        }
-    })
+    }))
 })
 
 router.put("/api/burgers", (req, res) => {
@@ -34,3 +31,5 @@ router.post("/api/burgers", (req, res) => {
         res.status(200).end();
     })
 })
+
+module.exports = router
