@@ -7,5 +7,3 @@ CREATE TABLE hamburgers (
     name VARCHAR(30) NOT NULL,
     isEaten BOOLEAN NOT NULL DEFAULT FALSE
 );
-
-SELECT * FROM hamburgers
