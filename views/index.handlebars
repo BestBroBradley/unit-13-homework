@@ -7,7 +7,7 @@
             {{#each eaten}}
             <div>
                 <h4>{{ name }} |
-                    <button class="eatBurger">Om Nom Nom</button></h4>
+                    <button data-id="{{id}}" class="eatBurger">Om Nom Nom</button></h4>
             </div>
             {{/each}}
         </div>
@@ -29,7 +29,7 @@
     <div id="submitDiv">
         <h3>Add a new burger:</h3>
         <form id="submitBurger">
-            <input type=text name="name">
+            <input id="burgerVal" type=text name="name">
             <button type="submit">Add Burger</button>
         </form>
     </div>
@@ -37,3 +37,23 @@
         <img class="burgerImg" src='burgers.png'>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(".eatBurger").on("click", function (event) {
+        var eatBurger = {id: $(this).data("id")}
+        $.ajax("/api/burgers", {
+            type: "PUT",
+            data: eatBurger
+        }).then(() => {
+            location.reload()
+        })
+
+    })
+
+    $("#submitBurger").on("submit", function(event) {
+        event.preventDefault();
+        var newBurger = $("#burgerVal").val().trim()
+        console.log(newBurger)
+    })
+
+</script>

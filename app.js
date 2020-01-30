@@ -30,18 +30,19 @@ app.get("/", (req, res) => {
         const hamburgers = data
         const eatenArray = hamburgers.filter(hamburger => (!hamburger.isEaten))
         const uneatenArray = hamburgers.filter(hamburger => (hamburger.isEaten))
-        console.log(eatenArray)
-        console.log(uneatenArray)
         res.render("index", {eaten: eatenArray, uneaten: uneatenArray})
         }
     })
 })
 
-
-
-
-
-
+app.put("/api/burgers", (req, res) => {
+    connection.query("UPDATE hamburgers SET isEaten = ? WHERE id = ?", [true, req.body.id], (err, data) => {
+        if (err) {
+            return res.status(500).end()
+        }
+        res.status(200).end();
+    })
+})
 
 
 
