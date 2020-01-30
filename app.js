@@ -44,6 +44,15 @@ app.put("/api/burgers", (req, res) => {
     })
 })
 
+app.post("/api/burgers", (req, res) => {
+    connection.query(`INSERT INTO hamburgers (name) VALUES (?)`, [req.body.name], (err, data) => {
+        if (err) {
+            return res.status(500).end()
+        }
+        res.status(200).end();
+    })
+})
+
 
 
 // End functionality

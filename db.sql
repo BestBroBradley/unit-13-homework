@@ -8,6 +8,4 @@ CREATE TABLE hamburgers (
     isEaten BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-INSERT INTO hamburgers (name) VALUES ("Veggie Burger");
-
 SELECT * FROM hamburgers

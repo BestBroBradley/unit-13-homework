@@ -52,8 +52,14 @@
 
     $("#submitBurger").on("submit", function(event) {
         event.preventDefault();
-        var newBurger = $("#burgerVal").val().trim()
-        console.log(newBurger)
+        var newBurger = {name: $("#burgerVal").val().trim()}
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(() => {
+            location.reload()
+        })
+        
     })
 
 </script>
