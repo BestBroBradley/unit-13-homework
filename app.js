@@ -53,8 +53,6 @@ app.post("/api/burgers", (req, res) => {
     })
 })
 
-
-
 // End functionality
 
 app.listen(PORT, function() {

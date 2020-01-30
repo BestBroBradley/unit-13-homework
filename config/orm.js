@@ -2,12 +2,28 @@ var connection = require("./connection.js")
 
 const orm = {
     logAll: (colToLog) => {
-        var queryString = "SELECT * FROM ??";
+        let queryString = "SELECT * FROM ??";
         connection.query(queryString, [colToLog], (err, data) => {
-            if (err) throw err;
+            if (err) throw err
             
         })
     },
+
+    updateBoolean: (table, boo, target) => {
+        let queryString = "UPDATE ?? SET isEaten = ?? WHERE id = ?"
+        connection.query(queryString, [table, boo, target], (err, data) => {
+            if (err) throw err
+
+        })
+    },
+
+    insertItem: (table, key, value) => {
+        let queryString = "INSERT INTO ?? (??) VALUES (?)"
+        connection.query(queryString, [table, key, value], (err, data) => {
+            if(err) throw err
+        
+        })
+    }
 }
 
 module.exports = orm;
