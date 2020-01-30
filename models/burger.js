@@ -11,10 +11,12 @@ const burger = {
 
     },
 
-    updateBoolean: (table, boo, target) => {
+    updateBoolean: (table, boo, target, cb) => {
         let queryString = "UPDATE ?? SET isEaten = ?? WHERE id = ?"
         connection.query(queryString, [table, boo, target], (err, data) => {
             if (err) throw err
+            console.log("Got to burger.updateBoolean")
+            return cb(data)
 
         })
     },

@@ -1,4 +1,4 @@
-const express = require ("express")
+const express = require("express")
 const connection = require("../config/connection.js")
 
 const router = express.Router();
@@ -10,26 +10,30 @@ router.get("/", (req, res) => {
         const hamburgers = data
         const eatenArray = hamburgers.filter(hamburger => (!hamburger.isEaten))
         const uneatenArray = hamburgers.filter(hamburger => (hamburger.isEaten))
-        res.render("index", {eaten: eatenArray, uneaten: uneatenArray})
+        res.render("index", { eaten: eatenArray, uneaten: uneatenArray })
     }))
 })
 
 router.put("/api/burgers", (req, res) => {
-    connection.query("UPDATE hamburgers SET isEaten = ? WHERE id = ?", [true, req.body.id], (err, data) => {
-        if (err) {
+    burger.updateBoolean("hamburgers", true, [req.body.id], (data => {
+        if (!data) {
             return res.status(500).end()
+        } else {
+            console.log(`Burger updated`)
+            return res.status(200).end()
         }
-        res.status(200).end();
-    })
+    }))
 })
 
 router.post("/api/burgers", (req, res) => {
-    connection.query(`INSERT INTO hamburgers (name) VALUES (?)`, [req.body.name], (err, data) => {
-        if (err) {
+    burger.insertItems("hamburgers", "name", [req.body.name], (data => {
+        if (!data) {
             return res.status(500).end()
+        } else {
+            console.log(`Added burger`)
+            res.status(200).end();
         }
-        res.status(200).end();
-    })
+    }))
 })
 
 module.exports = router
